@@ -39,11 +39,11 @@ def display_main_menu(my_list):
         # Collect input and include your if/elif/else statements here.
         user_input = raw_input(user_options)
 
-        if user_input.upper() == "A":
+        if user_input.lower() == "a":
             add_to_list(my_list)
-        elif user_input.upper() == "B":
+        elif user_input.lower() == "b":
             view_list(my_list)
-        elif user_input.upper() == "C":
+        elif user_input.lower() == "c":
             break
         else:
             print "Unknown input. Please try again."
