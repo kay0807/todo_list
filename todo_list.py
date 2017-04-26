@@ -35,8 +35,14 @@ def display_main_menu(my_list):
         # Collect input and include your if/elif/else statements here.
         user_input = raw_input(user_options)
 
-        
-        break
+        if user_input.upper() == "A":
+            add_to_list(my_list)
+        elif user_input.upper() == "B":
+            view_list(my_list)
+        elif user_input.upper() == "C":
+            break
+        else:
+            print "please try again."
 
 #-------------------------------------------------
 
