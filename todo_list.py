@@ -21,24 +21,34 @@ def add_to_list(my_list):
     """
 
     item = raw_input("Enter an item:")
-    insert_position = raw_input(insert_position_options)
 
-    if insert_position == "1":
-        my_list.insert(0, item)
-    elif insert_position == "2":
-        middle_index = len(my_list) / 2
-        my_list.insert(middle_index, item)
-    elif insert_position == "3":
-        my_list.append(item)
-    else:
-        print "unknown input"
+    has_dup = False
+    for curr_item in my_list:
+        if curr_item.lower() == item.lower():
+            print "Item already exists."
+            has_dup = True
+            break
+
+    if has_dup == False:
+
+        insert_position = raw_input(insert_position_options)
+
+        if insert_position == "1":
+            my_list.insert(0, item)
+        elif insert_position == "2":
+            middle_index = len(my_list) / 2
+            my_list.insert(middle_index, item)
+        elif insert_position == "3":
+            my_list.append(item)
+        else:
+            print "unknown input"
 
     return my_list
 
 def delete_from_beginning_of_list(my_list):
-
+    """Delete an item from the beginning of the list """
     if len(my_list) == 0:
-        print "There is nothing to delete in the list."    
+        print "There is nothing to delete."    
     else:
         del my_list[0]
 
@@ -50,6 +60,24 @@ def view_list(my_list):
     for item in my_list:
         print item
 
+def edit_list(my_list):
+    """Edit an item at a certain index. """
+
+    new_item = raw_input("What is the new item?")
+    index = raw_input("Indicate the index of the item you would like to edit.")
+
+    if len(my_list) > 0:
+        if int(index) > (len(my_list) - 1):
+            print "Invalid index"
+        else:
+            #print new_item
+            my_list[int(index)] = new_item
+            #print my_list[index]
+    else:
+        print "There is nothing to edit."
+
+    return my_list
+
 
 def display_main_menu(my_list):
     """Displays main options, takes in user input, and calls view or add function."""
@@ -60,6 +88,7 @@ def display_main_menu(my_list):
     B. View list
     C. Quit the program
     D. Delete an item from the beginning of the list
+    E. Edit list
     >>> """
 
     while True:
@@ -74,6 +103,8 @@ def display_main_menu(my_list):
             break
         elif user_input.lower() == "d" :
             delete_from_beginning_of_list(my_list)
+        elif user_input.lower() == "e":
+            edit_list(my_list)
         else:
             print "Unknown input. Please try again."
 
