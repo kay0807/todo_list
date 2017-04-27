@@ -57,8 +57,18 @@ def delete_from_beginning_of_list(my_list):
 def view_list(my_list):
     """Print each item in the list."""
 
-    for item in my_list:
-        print item
+    sort_it = raw_input("would you like to sort the list in the alpha order? Y/N: ")
+
+    if sort_it.lower() == "y":
+        sorted_list = sorted(my_list)
+        for item in sorted_list:
+            print item
+    elif sort_it.lower() == "n":
+        for item in my_list:
+            print item
+    else:
+        print "Unknown entry."
+
 
 def edit_list(my_list):
     """Edit an item at a certain index. """
