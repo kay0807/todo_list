@@ -12,11 +12,37 @@ You can run the script in your Terminal at any time using the command:
 def add_to_list(my_list):
     """Takes user input and adds it as a new item to the end of the list."""
 
+    insert_position_options = """
+    Where would you like to add the item?
+    1. Beginning 
+    2. Middle
+    3. End 
+    >>> 
+    """
+
     item = raw_input("Enter an item:")
-    my_list.append(item)
+    insert_position = raw_input(insert_position_options)
+
+    if insert_position == "1":
+        my_list.insert(0, item)
+    elif insert_position == "2":
+        middle_index = len(my_list) / 2
+        my_list.insert(middle_index, item)
+    elif insert_position == "3":
+        my_list.append(item)
+    else:
+        print "unknown input"
 
     return my_list
 
+def delete_from_beginning_of_list(my_list):
+
+    if len(my_list) == 0:
+        print "There is nothing to delete in the list."    
+    else:
+        del my_list[0]
+
+    return my_list
 
 def view_list(my_list):
     """Print each item in the list."""
@@ -33,6 +59,7 @@ def display_main_menu(my_list):
     A. Add a new item
     B. View list
     C. Quit the program
+    D. Delete an item from the beginning of the list
     >>> """
 
     while True:
@@ -45,6 +72,8 @@ def display_main_menu(my_list):
             view_list(my_list)
         elif user_input.lower() == "c":
             break
+        elif user_input.lower() == "d" :
+            delete_from_beginning_of_list(my_list)
         else:
             print "Unknown input. Please try again."
 
